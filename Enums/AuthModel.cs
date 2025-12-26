@@ -1,0 +1,1 @@
+﻿public enum AuthModel { Login, Register }

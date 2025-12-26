@@ -1,31 +1,37 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+<PageTitle>TaskTracker - Home</PageTitle>
 <main class="main">
+    @if(_showForm)
+    {
+        <Auth AuthOption="@_authOption" OnClose="CloseForm"></Auth>
+    }
+
     <div class="main__background"></div>
     <div class="main__content">
         <header class="main__header">
             <div class="main__auth">
-                <a class="main__link main__link--header" href="#">Login</a>
-                <a class="main__link main__link--header" href="#">Register</a>
+                <span class="main__link main__link--header" @onclick='() => OpenForm(AuthModel.Login)'>Login</span>
+                <span class="main__link main__link--header" @onclick="() => OpenForm(AuthModel.Register)">Register</span>
             </div>
         </header>
         <section class="main__articles">
             <article class="main__article">
                 <h1 class="main__article--header" @onclick='() => HandleDesc("Plan")'>Plan</h1>
                 <div class="main__text--wrapper @(_showDesc["Plan"] ? "show" : "")">
-                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                    <p class="main__text">Start with a solid foundation. Organize your daily tasks, set clear priorities, and categorize complex projects. Whether it's a simple to-do list or a team roadmap, our intuitive interface makes planning effortless.</p>
                 </div>
             </article>
             <article class="main__article">
                 <h1 class="main__article--header" @onclick='() => HandleDesc("Track")'>Track</h1>
                 <div class="main__text--wrapper @(_showDesc["Track"] ? "show" : "")">
-                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                    <p class="main__text">Stay on top of every detail. Monitor progress in real-time, manage deadlines, and visualize your workflow. Never miss a milestone again with smart reminders and a clear overview of what needs your attention next.</p>
                 </div>
             </article>
             <article class="main__article">
                 <h1 class="main__article--header" @onclick='() => HandleDesc("Achieve")'>Achieve</h1>
                 <div class="main__text--wrapper @(_showDesc["Achieve"] ? "show" : "")">
-                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                    <p class="main__text">Turn your goals into reality. Celebrate every completed task and analyze your productivity patterns. TaskTracker gives you the insights and motivation you need to finish projects faster and efficiently.</p>
                 </div>
             </article>
         </section>

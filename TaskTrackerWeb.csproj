@@ -12,7 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Components\Layout\Auth.razor.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\components\" />
   </ItemGroup>
 
 </Project>

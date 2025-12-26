@@ -2,5 +2,13 @@
   {
     "outputFile": "Components/Pages/Home.razor.css",
     "inputFile": "Components/Pages/Home.razor.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/form.css",
+    "inputFile": "wwwroot/css/components/form.scss"
+  },
+  {
+    "outputFile": "Components/Layout/Auth.razor.css",
+    "inputFile": "Components/Layout/Auth.razor.scss"
   }
 ]

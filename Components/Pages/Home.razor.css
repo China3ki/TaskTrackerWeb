@@ -53,7 +53,7 @@
   gap: 10px;
 }
 .main .main__content .main__articles .main__article {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   max-width: 400px;
   border-radius: 20px;
   overflow: hidden;
@@ -63,6 +63,7 @@
   color: white;
   transition: 0.2s;
   cursor: pointer;
+  font-size: 25px;
 }
 .main .main__content .main__articles .main__article .main__article--header:hover {
   background-color: rgba(255, 255, 255, 0.2);
@@ -75,7 +76,7 @@
   max-height: 300px;
 }
 .main .main__content .main__articles .main__article .main__text {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   padding: 15px;
   line-height: 30px;
@@ -115,7 +116,6 @@
   text-align: center;
 }
 .main .main__content .main__footer .main__try .main__without {
-  font-size: 15px;
   transition: 0.2s;
 }
 .main .main__content .main__footer .main__try .main__without:hover {
@@ -129,6 +129,9 @@
   .main .main__content .main__articles {
     flex-direction: row !important;
     justify-content: space-evenly;
+  }
+  .main .main__content .main__articles .main__article {
+    min-height: 272px !important;
   }
   .main .main__content .main__articles .main__text--wrapper {
     max-height: 500px !important;
