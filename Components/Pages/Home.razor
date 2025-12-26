@@ -1,0 +1,50 @@
+﻿@page "/"
+@rendermode InteractiveServer
+<main class="main">
+    <div class="main__background"></div>
+    <div class="main__content">
+        <header class="main__header">
+            <div class="main__auth">
+                <a class="main__link main__link--header" href="#">Login</a>
+                <a class="main__link main__link--header" href="#">Register</a>
+            </div>
+        </header>
+        <section class="main__articles">
+            <article class="main__article">
+                <h1 class="main__article--header" @onclick='() => HandleDesc("Plan")'>Plan</h1>
+                <div class="main__text--wrapper @(_showDesc["Plan"] ? "show" : "")">
+                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                </div>
+            </article>
+            <article class="main__article">
+                <h1 class="main__article--header" @onclick='() => HandleDesc("Track")'>Track</h1>
+                <div class="main__text--wrapper @(_showDesc["Track"] ? "show" : "")">
+                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                </div>
+            </article>
+            <article class="main__article">
+                <h1 class="main__article--header" @onclick='() => HandleDesc("Achieve")'>Achieve</h1>
+                <div class="main__text--wrapper @(_showDesc["Achieve"] ? "show" : "")">
+                    <p class="main__text">TaskTracker is an intuitive task management solution designed to streamline your daily life and professional projects. Whether you are planning a simple grocery list or managing complex team milestones, TaskTracker provides the tools you need to stay organized and focused.</p>
+                </div>
+            </article>
+        </section>
+        <footer class="main__footer">
+            <div class="main__title">
+                <img class="main__logo" src="favicon.png" alt="Task tracker logo" />
+                <div class="main__footer--header">
+                    <h1 class="main__name">Task Tracker</h1>
+                    <div class="main__description">
+                        <span>Plan</span>
+                        <span>Track</span>
+                        <span>Achieve</span>
+                    </div>
+                </div>
+            </div>
+            <div class="main__try">
+                <span class="main__link main__link--footer">Try now!</span>
+                <a class="main__without" href="#">or try without login</a>
+            </div>
+        </footer>
+    </div>
+</main>
