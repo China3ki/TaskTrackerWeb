@@ -57,6 +57,7 @@
             }
         }
         .auth__content {
+            position:relative;
             display:flex;
             flex-direction:column;
             gap:20px;
@@ -70,60 +71,41 @@
                 .auth__desc {
                     letter-spacing:3px;
                 }
-            }
-            .auth__form {
+            }   
+            .auth__validation {
+                position:absolute;
                 display:flex;
                 flex-direction:column;
                 gap:10px;
-                .auth__pair {
+                right:-270px;
+                max-width: 240px;
+                text-align:center;
+                background-color:rgba(black, .8);
+                backdrop-filter: blur(5px);
+                padding:20px;
+                .auth__head {
+                    font-size:20px;
+                    border-bottom: 2px dashed white;
+                    padding-bottom:10px;
+                }
+                .auth__list {
                     display:flex;
-                    align-items:center;
-                    gap:8px;
-                    .auth__label {
-                        width:20px;
-                        height:20px;
-                        background-color:white;
-                        mask-size: contain;
-                        transition:.2s;
-                        cursor:pointer;
-                    }
-                    .auth__label--user {
-                        mask-image: url("/icons/form/user.svg");
-                    }
-                    .auth__label--email {
-                        mask-image: url("/icons/form/email.svg");
-                    }
-                    .auth__label--password {
-                        mask-image: url("/icons/form/password.svg");
-                    }
-                    .auth__label:hover {
-                        background-color:rgba(154, 187, 166);
-                    }
-                    .auth__input {
-                        height:40px;
-                        width:250px;
-                        background-color:transparent;
-                        border:none;
-                        border-bottom: 1px solid white;
-                        padding:10px;
-                        color:white;
-                        font-size:18px;
-                    }
-                    .auth__input:focus {
-                        outline:none;
-                    }
-                    .auth__input::placeholder {
-                        color:rgba(white, .8);
-                    }
-                    .auth__input--submit {
-                        width:100%;
-                        border: none;
-                        cursor:pointer;
-                        transition:.2s;
-                    }
-                    .auth__input--submit:hover {
-                        background-color:black;
-                    }
+                    flex-direction:column;
+                    gap:10px;
+                    list-style-type:none;
+                }
+            }
+            .auth__success {
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                background-color: rgba(black, .7);
+                padding:10px;
+                border-radius:25px;
+                font-size:15px;
+                .auth__success--info {
+                    color:lightgreen;
+                    font-size:17px;
                 }
             }
         }
@@ -133,11 +115,8 @@
     .auth__wrapper {
         .auth {
             .auth__content {
-                flex-direction:row;
+                flex-direction:row;                
             }
         }
     }
-
-
-
 }

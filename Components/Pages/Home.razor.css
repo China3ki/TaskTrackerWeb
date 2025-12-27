@@ -116,6 +116,7 @@
   text-align: center;
 }
 .main .main__content .main__footer .main__try .main__without {
+  cursor: pointer;
   transition: 0.2s;
 }
 .main .main__content .main__footer .main__try .main__without:hover {

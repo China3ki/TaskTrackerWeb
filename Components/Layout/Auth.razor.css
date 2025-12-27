@@ -59,6 +59,7 @@
   border-bottom: 2px solid rgb(154, 187, 166);
 }
 .auth__wrapper .auth .auth__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -74,60 +75,41 @@
 .auth__wrapper .auth .auth__content .auth__info .auth__desc {
   letter-spacing: 3px;
 }
-.auth__wrapper .auth .auth__content .auth__form {
+.auth__wrapper .auth .auth__content .auth__validation {
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  right: -270px;
+  max-width: 240px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 20px;
 }
-.auth__wrapper .auth .auth__content .auth__form .auth__pair {
+.auth__wrapper .auth .auth__content .auth__validation .auth__head {
+  font-size: 20px;
+  border-bottom: 2px dashed white;
+  padding-bottom: 10px;
+}
+.auth__wrapper .auth .auth__content .auth__validation .auth__list {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style-type: none;
+}
+.auth__wrapper .auth .auth__content .auth__success {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__label {
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  mask-size: contain;
-  transition: 0.2s;
-  cursor: pointer;
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__label--user {
-  mask-image: url("/icons/form/user.svg");
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__label--email {
-  mask-image: url("/icons/form/email.svg");
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__label--password {
-  mask-image: url("/icons/form/password.svg");
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__label:hover {
-  background-color: rgb(154, 187, 166);
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__input {
-  height: 40px;
-  width: 250px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 10px;
-  color: white;
-  font-size: 18px;
+  border-radius: 25px;
+  font-size: 15px;
 }
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__input:focus {
-  outline: none;
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__input--submit {
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.auth__wrapper .auth .auth__content .auth__form .auth__pair .auth__input--submit:hover {
-  background-color: black;
+.auth__wrapper .auth .auth__content .auth__success .auth__success--info {
+  color: lightgreen;
+  font-size: 17px;
 }
 
 @media only screen and (min-width: 768px) {

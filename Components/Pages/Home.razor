@@ -4,7 +4,7 @@
 <main class="main">
     @if(_showForm)
     {
-        <Auth AuthOption="@_authOption" OnClose="CloseForm"></Auth>
+        <Auth RegisterSuccess="@RegisterSuccess" AuthOption="@_authOption" OnClose="CloseForm"></Auth>
     }
 
     <div class="main__background"></div>
@@ -48,8 +48,8 @@
                 </div>
             </div>
             <div class="main__try">
-                <span class="main__link main__link--footer">Try now!</span>
-                <a class="main__without" href="#">or try without login</a>
+                <span class="main__link main__link--footer" @onclick="() => OpenForm(AuthModel.Register)">Try now!</span>
+                <span class="main__without">or try without login</span>
             </div>
         </footer>
     </div>

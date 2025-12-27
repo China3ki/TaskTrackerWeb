@@ -10,3 +10,106 @@ a:visited {
     color:black;
     text-decoration:none;
 }
+/* form Style */
+.validation-errors {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    list-style-type:none;
+   .validation-message {
+       color:rgb(255 136 136);
+   }
+}
+.auth__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .auth__pair {
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        gap: 8px;
+        max-width:300px;
+
+        .auth__label {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            mask-size: contain;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .auth__label--user {
+            mask-image: url("/icons/form/user.svg");
+        }
+
+        .auth__label--email {
+            mask-image: url("/icons/form/email.svg");
+        }
+
+        .auth__label--password {
+            mask-image: url("/icons/form/password.svg");
+        }
+
+        .auth__label:hover {
+            background-color: rgba(154, 187, 166);
+        }
+
+        .auth__input {
+            height: 40px;
+            width: 250px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid white;
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+        }
+        .auth__input.invalid {
+            border-bottom: 1px solid rgb(255 136 136);
+        }
+
+            .auth__input:focus {
+                outline: none;
+            }
+
+            .auth__input::placeholder {
+                color: rgba(white, .8);
+            }
+
+        .auth__input--submit {
+            border: none;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+            .auth__input--submit:hover {
+                background-color: black;
+            }
+    }
+}
+@media only screen and (min-width: 768px) {
+
+    .auth__form {
+        border-left: 1px dashed white !important;
+        padding-left: 20px;
+        align-items:center;
+    }
+
+        .auth__form.login {
+            border-left: none !important;
+            border-right: 1px dashed white;
+            padding: 0px;
+            padding-right: 20px;
+        }
+
+    .auth__info.login {
+        order: 1;
+    }
+
+
+
+}
