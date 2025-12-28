@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using TaskTrackerWeb.Entities;
 using TaskTrackerWeb.Models;
 using TaskTrackerWeb.Services;
 
@@ -17,26 +13,33 @@ namespace TaskTrackerWeb.Components.Layout
         [Parameter]
         public AuthModel AuthOption { get; set; } = AuthModel.Login;
         [Parameter]
-        public string RegisterSuccess { get; set; } = string.Empty;
+        public bool ShowSuccessMessage { get; set; } = false;
         [Inject]
         public AuthService AuthService { get; set; } = default!;
         [Inject]
         public NavigationManager Navigation { get; set; } = default!;
         private RegisterModel _register = new();
-        private EditContext? _editContext;
-        private ValidationMessageStore? _messageStore;
+        private LoginModel _login = new();
+        private EditContext? _registerContext;
+        private EditContext? _loginContext;
+        private ValidationMessageStore? _registerMessageStore;
+        private ValidationMessageStore? _loginMessageStore;
 
         protected override void OnInitialized()
         {
-            _editContext = new(_register);
-            _messageStore = new(_editContext);
+            _registerContext = new(_register);
+            _loginContext = new(_login);
 
-            _editContext.OnFieldChanged += (s, e) =>
+            _registerMessageStore = new(_registerContext);
+            _loginMessageStore = new(_loginContext);
+
+            _registerContext.OnFieldChanged += (s, e) =>
             {
-                if (e.FieldIdentifier.FieldName == nameof(_register.Email))
-                {
-                    _messageStore?.Clear(e.FieldIdentifier);
-                }
+                if (e.FieldIdentifier.FieldName == nameof(_register.Email)) _registerMessageStore?.Clear(e.FieldIdentifier);
+            };
+            _loginContext.OnFieldChanged += (s, e) =>
+            {
+                if (e.FieldIdentifier.FieldName == nameof(_login.Email) || e.FieldIdentifier.FieldName == nameof(_login.Password)) _loginMessageStore?.Clear(e.FieldIdentifier);
             };
             base.OnInitialized();
         }
@@ -45,27 +48,45 @@ namespace TaskTrackerWeb.Components.Layout
         {
             await OnClose.InvokeAsync();
         }
+        private void CloseSuccessMessage() => ShowSuccessMessage = false;
         private void HandleFormModel(AuthModel option) => AuthOption = option;
+        private async Task SubmitLogin()
+        {
+            (bool accountExist, string error) = await AuthService.ValidateLoginData(_login);
+            if(!accountExist)
+            {
+                _loginMessageStore?.Add(_loginContext!.Field(nameof(_login.Password)), error);
+                _loginContext?.NotifyValidationStateChanged();
+                return;
+            }
+            Navigation.NavigateTo("/");
+        }
         private async Task SubmitRegister()
         {
             (bool accountExist, string error) = await AuthService.AccountExist(_register.Email);
             if(accountExist && string.IsNullOrEmpty(error))
             {
-                _messageStore?.Add(_editContext!.Field(nameof(_register.Email)), "Account already exist!");
-                _editContext?.NotifyValidationStateChanged();
+                _registerMessageStore?.Add(_registerContext!.Field(nameof(_register.Email)), "Account already exist!");
+                _registerContext?.NotifyValidationStateChanged();
                 return;
             } else if(!accountExist && !string.IsNullOrEmpty(error))
             {
-                _messageStore?.Add(_editContext!.Field(nameof(_register.Email)), error);
-                _editContext?.NotifyValidationStateChanged();
+                _registerMessageStore?.Add(_registerContext!.Field(nameof(_register.Email)), error);
+                _registerContext?.NotifyValidationStateChanged();
                 return;
             }
              bool success = await AuthService.AddUser(_register);
-            if(success) Navigation.NavigateTo("/?success=true", true);
+            if (success)
+            {
+                ShowSuccessMessage = true;
+                AuthOption = AuthModel.Login;
+                _register = new RegisterModel();
+                _registerContext = new EditContext(_register);
+            }
             else
             {
-                _messageStore?.Add(_editContext!.Field(nameof(_register.Name)), "Something goes wrong, try later!");
-                _editContext?.NotifyValidationStateChanged();
+                _registerMessageStore?.Add(_registerContext!.Field(nameof(_register.Name)), "Something goes wrong, try later!");
+                _registerContext?.NotifyValidationStateChanged();
             }
         }
     }

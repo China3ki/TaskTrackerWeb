@@ -33,6 +33,9 @@ public partial class TaskTrackerContext : DbContext
 
     public virtual DbSet<UsersInvitation> UsersInvitations { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseNpgsql("server=127.0.0.1;uid=postgres;pwd=2004Pawel!;database=taskTracker;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -212,9 +215,11 @@ public partial class TaskTrackerContext : DbContext
             entity.Property(e => e.UserId)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("user_id");
+            entity.Property(e => e.UserAdmin).HasColumnName("user_admin");
             entity.Property(e => e.UserEmail)
                 .HasMaxLength(100)
                 .HasColumnName("user_email");
+            entity.Property(e => e.UserImage).HasColumnName("user_image");
             entity.Property(e => e.UserName)
                 .HasMaxLength(100)
                 .HasColumnName("user_name");

@@ -14,27 +14,28 @@
                     <h1 class="auth__title">Login</h1>
                     <span class="auth__desc">Hi! Welcome back!</span>
                 </div>
-                <form class="auth__form login">
+                <EditForm EditContext="@_loginContext" class="auth__form login" OnValidSubmit="SubmitLogin">
+                    <DataAnnotationsValidator />
                     <div class="auth__pair">
                         <label class="auth__label auth__label--email" for="email"></label>
-                        <input class="auth__input" id="email" type="email" placeholder="Email" />
+                        <InputText class="auth__input" id="email" type="email" placeholder="Email" @bind-value="_login.Email" @onclick="CloseSuccessMessage" />
                     </div>
                     <div class="auth__pair">
                         <label class="auth__label auth__label--password" for="password"></label>
-                        <input class="auth__input" id="password" type="password" placeholder="Password" />
+                        <InputText class="auth__input" id="password" type="password" placeholder="Password" @bind-value="_login.Password" @onclick="CloseSuccessMessage" />
                     </div>
                     <div class="auth__pair">
                         <input class="auth__input auth__input--submit" type="submit" value="Login" />
                     </div>
-                    @*Wyświetlić komunikat!*@
-                    @if (!string.IsNullOrEmpty(RegisterSuccess) && RegisterSuccess == "true")
+                    @if (ShowSuccessMessage)
                     {
                         <div class="auth__success">
                             <span class="auth__success--info">Your account has been created!</span>
                             <span>Now you can login</span>
                         </div>
                     }
-                </form>
+                    <ValidationSummary />
+                </EditForm>
             }
             else
             {
@@ -42,7 +43,7 @@
                     <h1 class="auth__title">Register</h1>
                     <span class="auth__desc">Hi! Nice to meet you!</span>
                 </div>
-                <EditForm class="auth__form" EditContext="@_editContext" OnValidSubmit="SubmitRegister">
+                <EditForm class="auth__form" EditContext="@_registerContext" OnValidSubmit="SubmitRegister">
                     <DataAnnotationsValidator/> 
                     <div class="auth__pair">
                         <label class="auth__label auth__label--user" for="name"></label>

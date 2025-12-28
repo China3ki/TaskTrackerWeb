@@ -15,6 +15,10 @@ public partial class User
 
     public string UserPassword { get; set; } = null!;
 
+    public string? UserImage { get; set; }
+
+    public bool UserAdmin { get; set; }
+
     public virtual ICollection<AssignSubTask> AssignSubTasks { get; set; } = new List<AssignSubTask>();
 
     public virtual ICollection<TaskComment> TaskComments { get; set; } = new List<TaskComment>();

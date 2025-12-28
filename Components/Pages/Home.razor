@@ -4,9 +4,9 @@
 <main class="main">
     @if(_showForm)
     {
-        <Auth RegisterSuccess="@RegisterSuccess" AuthOption="@_authOption" OnClose="CloseForm"></Auth>
+        <Auth ShowSuccessMessage="@_showSuccessMessage" AuthOption="@_authOption" OnClose="CloseForm"></Auth>
     }
-
+    
     <div class="main__background"></div>
     <div class="main__content">
         <header class="main__header">
@@ -35,6 +35,8 @@
                 </div>
             </article>
         </section>
+        <AuthorizeView>
+            <Authorized>
         <footer class="main__footer">
             <div class="main__title">
                 <img class="main__logo" src="favicon.png" alt="Task tracker logo" />
@@ -52,5 +54,7 @@
                 <span class="main__without">or try without login</span>
             </div>
         </footer>
+            </Authorized>
+        </AuthorizeView>
     </div>
 </main>

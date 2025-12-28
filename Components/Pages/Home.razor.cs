@@ -8,11 +8,10 @@ namespace TaskTrackerWeb.Components.Pages
         private Dictionary<string, bool> _showDesc = new() { { "Plan", false }, { "Track", false }, { "Achieve", false } };
         private bool _showForm = false;
         private AuthModel _authOption = AuthModel.Login;
-        [SupplyParameterFromQuery(Name = "success")]
-        public string? RegisterSuccess { get; set; }
+        private bool _showSuccessMessage  = false;
         protected override void OnInitialized()
         {
-            if (!string.IsNullOrEmpty(RegisterSuccess)) OpenForm(AuthModel.Login);
+            if (_showSuccessMessage) OpenForm(AuthModel.Login);
             base.OnInitialized();
         }
         private void HandleDesc(string name)
