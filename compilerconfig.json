@@ -10,5 +10,9 @@
   {
     "outputFile": "Components/Layout/Auth.razor.css",
     "inputFile": "Components/Layout/Auth.razor.scss"
+  },
+  {
+    "outputFile": "Components/Layout/Nav.razor.css",
+    "inputFile": "Components/Layout/Nav.razor.scss"
   }
 ]

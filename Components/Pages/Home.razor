@@ -35,8 +35,6 @@
                 </div>
             </article>
         </section>
-        <AuthorizeView>
-            <Authorized>
         <footer class="main__footer">
             <div class="main__title">
                 <img class="main__logo" src="favicon.png" alt="Task tracker logo" />
@@ -51,10 +49,8 @@
             </div>
             <div class="main__try">
                 <span class="main__link main__link--footer" @onclick="() => OpenForm(AuthModel.Register)">Try now!</span>
-                <span class="main__without">or try without login</span>
+                <NavLink class="main__without" href="panel">or try without login</NavLink>
             </div>
         </footer>
-            </Authorized>
-        </AuthorizeView>
     </div>
 </main>

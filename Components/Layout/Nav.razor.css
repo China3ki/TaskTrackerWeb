@@ -1,0 +1,86 @@
+﻿.nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px;
+  height: 100vh;
+  transition: 0.4s;
+}
+.nav .nav__list {
+  list-style-type: none;
+}
+.nav .nav__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.nav .nav__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+.nav .nav__header .nav__avatar {
+  width: 60px;
+}
+.nav .nav__header .nav__name {
+  font-size: 20px;
+}
+.nav .nav__header .nav__list--nested {
+  display: none;
+}
+.nav .nav__list--main {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.nav .nav__list--main .nav__element {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  font-size: 19px;
+  border-radius: 20px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.nav .nav__list--main .nav__element .nav__sp {
+  font-size: 19px;
+}
+.nav .nav__list--main .nav__element .nav__icon {
+  width: 30px;
+}
+.nav .nav__list--main .nav__element:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.nav .nav__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  border-top: 1px solid black;
+  width: 100%;
+}
+.nav .nav__footer .nav__logo {
+  width: 100px;
+}
+.nav .nav__footer .nav__header--footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav .nav__footer .nav__header--footer .nav__title {
+  font-style: italic;
+}
+.nav .nav__footer .nav__header--footer .nav__description {
+  display: flex;
+  gap: 5px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.nav.hide {
+  transform: translateX(-100%);
+}

@@ -1,7 +1,12 @@
+@font-face {
+    font-family: "now";
+    src: url("/fonts/now.light.otf");
+}
 * {
     margin:0px;
     padding:0px;
     box-sizing:border-box;
+    font-family: "now";
 }
 a {
     text-decoration:none;
